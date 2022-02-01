@@ -1,0 +1,1 @@
+<div>employee.DESTROY: {{ $id }}</div>

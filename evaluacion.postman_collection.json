@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "a4f32c3e-526f-4a8c-a9d7-79c61a7ca41c",
+		"name": "evaluacion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "index employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/employee",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show employee",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set('aleatorio', Math.floor(Math.random() * 12 + 1));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/employee/{{aleatorio}}",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"employee",
+						"{{aleatorio}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete employee",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set('aleatorio', Math.floor(Math.random() * 12 + 1));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/employee/destroy?_method=delete&id={{aleatorio}}",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"employee",
+						"destroy"
+					],
+					"query": [
+						{
+							"key": "_method",
+							"value": "delete"
+						},
+						{
+							"key": "id",
+							"value": "{{aleatorio}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit employee",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set('aleatorio', Math.floor(Math.random() * 12 + 1));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/employee/{{aleatorio}}/edit",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"employee",
+						"{{aleatorio}}",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/employee/update?_method=put&id={{aleatorio}}&first_name={{$randomFirstName}}&last_name={{$randomLastName}}&department=Dpt-{{$randomFirstName}}-{{$randomLastName}}",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"employee",
+						"update"
+					],
+					"query": [
+						{
+							"key": "_method",
+							"value": "put"
+						},
+						{
+							"key": "id",
+							"value": "{{aleatorio}}"
+						},
+						{
+							"key": "first_name",
+							"value": "{{$randomFirstName}}"
+						},
+						{
+							"key": "last_name",
+							"value": "{{$randomLastName}}"
+						},
+						{
+							"key": "department",
+							"value": "Dpt-{{$randomFirstName}}-{{$randomLastName}}"
+						},
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/team/store?first_name={{$randomFirstName}}&last_name={{$randomLastName}}&department=Dpt-{{$randomFirstName}}-{{$randomLastName}}",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"team",
+						"store"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "{{$randomFirstName}}"
+						},
+						{
+							"key": "last_name",
+							"value": "{{$randomLastName}}"
+						},
+						{
+							"key": "department",
+							"value": "Dpt-{{$randomFirstName}}-{{$randomLastName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
